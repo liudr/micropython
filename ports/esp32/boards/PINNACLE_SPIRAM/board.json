@@ -1,0 +1,24 @@
+{
+    "deploy": [
+        "../deploy.md"
+    ],
+    "docs": "",
+    "features": [
+        "BLE",
+        "SPIRAM",
+        "Ethernet",
+        "WiFi"
+    ],
+    "id": "pinnacleesp32spiram",
+    "images": [
+        "esp32_psram.jpg"
+    ],
+    "mcu": "esp32",
+    "product": "Pinnacle ESP32 with SPIRAM",
+    "thumbnail": "",
+    "url": "https://www.espressif.com/en/products/modules",
+    "variants": {
+        "idf3": "Compiled with IDF 3.x"
+    },
+    "vendor": "Espressif"
+}

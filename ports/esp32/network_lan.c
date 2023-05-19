@@ -45,7 +45,7 @@
 #endif
 
 #include "modnetwork.h"
-
+#include "extmod/modnetwork.h"
 typedef struct _lan_if_obj_t {
     mp_obj_base_t base;
     int if_id; // MUST BE FIRST to match wlan_if_obj_t
@@ -328,7 +328,7 @@ STATIC mp_obj_t get_lan(size_t n_args, const mp_obj_t *pos_args, mp_map_t *kw_ar
     }
 
     eth_status = ETH_INITIALIZED;
-
+    esp_exceptions(tcpip_adapter_set_hostname(TCPIP_ADAPTER_IF_ETH, mod_network_hostname));
     return MP_OBJ_FROM_PTR(&lan_obj);
 }
 MP_DEFINE_CONST_FUN_OBJ_KW(esp_network_get_lan_obj, 0, get_lan);
@@ -349,7 +349,7 @@ STATIC mp_obj_t lan_active(size_t n_args, const mp_obj_t *args) {
             }
         }
     }
-
+    esp_exceptions(tcpip_adapter_set_hostname(TCPIP_ADAPTER_IF_ETH, mod_network_hostname));
     return mp_obj_new_bool(self->active);
 }
 STATIC MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(lan_active_obj, 1, 2, lan_active);
