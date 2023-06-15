@@ -1,0 +1,19 @@
+First, we need to export some path and constants:
+cd Documents/Projects/esp/esp-idf/
+source export.sh
+
+Once you run the script, go to the work folder, which is the esp32 folder under port:
+cd ~/Documents/Projects/liudr/micropython/ports/esp32/
+
+You may have to manually erase the flash before uploading new firmware:
+python3 -m esptool --baud 1500000 --chip esp32 --before default_reset --after hard_reset --port /dev/ttyUSB0 erase_flash
+
+Clean an existing build:
+make BOARD=PINNACLE_SPIRAM clean
+
+Make and upload new firmware with PINNACLE_SPIRAM board setting. Another board setting is PINNACLE that has no SPIRAM.
+make BOARD=PINNACLE_SPIRAM deploy
+
+Serial port monitor:
+picocom -b 115200 /dev/ttyUSB0
+
