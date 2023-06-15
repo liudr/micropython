@@ -2,9 +2,9 @@ How to set up a custom board:
 Make a copy of the GENERIC_SPIRAM subfolder in ports/esp32/boards under a different name. You will update the following files in the copy:
 board.json is just a list for the micropython.org list of firmware so its keywords aren't affecting the compilation.
 mpconfigboard.cmake includes cmake options. boards/PINNACLE_SPIRAM/sdkconfig.board must have the correct board subfolder so all other settings are used.
+    Adding to .cmake file add_compile_definitions(MICROPY_PY_NETWORK_HOSTNAME_MAX_LEN=31) will cause the dhcp host name size to increase from 15 to 30. The last byte is used for \0.
 mpconfigboard.h has some definitions including the name that appears when entering mp REPL
 sdkconfig.board includes the compilation switches. For instance, including CONFIG_ETH_SPI_ETHERNET_W5500=y will cause the firmware to include Wiznet W5500 support.
-Adding MICROPY_PY_NETWORK_HOSTNAME_MAX_LEN=30 will cause the dhcp host name size to increase from 15 to 29. The last byte is used for \0.
 
 How to compile the firmware:
 First, we need to export some path and constants:
