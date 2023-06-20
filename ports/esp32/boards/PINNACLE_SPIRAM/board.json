@@ -9,7 +9,7 @@
         "Ethernet",
         "WiFi"
     ],
-    "id": "pinnacleesp32spiram",
+    "id": "pinnacle esp32 spiram",
     "images": [
         "esp32_psram.jpg"
     ],

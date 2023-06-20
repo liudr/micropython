@@ -5,6 +5,7 @@
     "docs": "",
     "features": [
         "BLE",
+        "Ethernet",
         "WiFi"
     ],
     "id": "Pinnacle esp32",
@@ -12,7 +13,7 @@
         "esp32_devkitc.jpg"
     ],
     "mcu": "esp32",
-    "product": "ESP32",
+    "product": "Pinnacle ESP32",
     "thumbnail": "",
     "url": "https://www.espressif.com/en/products/modules",
     "variants": {
