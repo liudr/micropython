@@ -3,9 +3,9 @@ Clone micropython with the following instructions:
 https://docs.micropython.org/en/latest/develop/gettingstarted.html
 
 How to set up a custom board:
-Make a copy of the GENERIC_SPIRAM subfolder in ports/esp32/boards under a different name. You will update the following files in the copy:
+Make a copy of the GENERIC_SPIRAM or GENERIC subfolder in ports/esp32/boards under a new folder name. This new folder name serves as the name of your custome board. You will update the following files in the copy:
 board.json is just a list for the micropython.org list of firmware so its keywords aren't affecting the compilation.
-mpconfigboard.cmake includes cmake options. boards/PINNACLE_SPIRAM/sdkconfig.board must have the correct board subfolder so all other settings are used.
+mpconfigboard.cmake includes cmake options. boards/[new folder name]/sdkconfig.board must have the correct board subfolder so all other settings are used.
     Adding to .cmake file add_compile_definitions(MICROPY_PY_NETWORK_HOSTNAME_MAX_LEN=31) will cause the dhcp host name size to increase from 15 to 30. The last byte is used for \0.
 mpconfigboard.h has some definitions including the name that appears when entering mp REPL
 sdkconfig.board includes the compilation switches. For instance, including CONFIG_ETH_SPI_ETHERNET_W5500=y will cause the firmware to include Wiznet W5500 support.
@@ -22,10 +22,10 @@ You may have to manually erase the flash before uploading new firmware:
 python3 -m esptool --baud 1500000 --chip esp32 --before default_reset --after hard_reset --port /dev/ttyUSB0 erase_flash
 
 Clean an existing build:
-make BOARD=PINNACLE_SPIRAM clean
+make BOARD=[new folder name] clean
 
-Make and upload new firmware with PINNACLE_SPIRAM board setting. Another board setting is PINNACLE that has no SPIRAM.
-make BOARD=PINNACLE_SPIRAM deploy
+Make and upload new firmware:
+make BOARD=[new folder name] deploy
 
 Serial port monitor:
 picocom -b 115200 /dev/ttyUSB0
